@@ -10,11 +10,8 @@ TComms::TComms(TCommParams& pars, QObject* parent) :QUdpSocket(parent) {
     if (ready) connect(this, SIGNAL(readyRead()), this, SLOT(receive()));
 }
 
-bool TComms::isReady(){
-    return ready;
-}
 
-void TComms::send(QByteArray msg) {
+void TComms::send(const QByteArray& msg) {
     if (ready) {
         writeDatagram(msg, params.sHost, params.sPort);
     }

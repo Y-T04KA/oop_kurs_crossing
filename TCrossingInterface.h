@@ -9,15 +9,24 @@
 #include "TComms.h"
 #include "common.h"
 #include "CrossingWidget.h"
+#include <QTimer>
 
 class TCrossingInterface : public QApplication {
     Q_OBJECT
     TComms* comm;
     CrossingWidget* cw;
+    bool state = false;
+    unsigned time = 2000;
+    QTimer *timer = new QTimer(this);
+    QTimer* oto = new QTimer(this);
+    QTimer* ye = new QTimer(this);
 public:
     TCrossingInterface(int, char**);
 public slots:
-    void receive(QByteArray);
+    void receive(const QByteArray&);
+    void blink();
+    void autoCycle();
+    void autoyell();
 };
 
 

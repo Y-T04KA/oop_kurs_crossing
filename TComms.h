@@ -24,11 +24,10 @@ class TComms : public QUdpSocket
     TCommParams params;
 public:
     TComms(TCommParams&, QObject* parent = nullptr);
-    bool isReady();
     signals:
             void received(QByteArray);
 public slots:
-            void send(QByteArray);
+            void send(const QByteArray&);
 private slots:
             void receive();
 };

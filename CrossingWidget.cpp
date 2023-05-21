@@ -24,10 +24,7 @@ void CrossingWidget::paintEvent(QPaintEvent *) {
     int offset = 100;
     int lheight = 240;
     int lwidth = 80;
-    ///
-    auto c = Qt::red;
-    painter.setBrush(c);
-    ////
+
     painter.setBrush(Qt::black);
     painter.setPen(Qt::white);
 
