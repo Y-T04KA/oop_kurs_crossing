@@ -5,7 +5,7 @@
 #include "CrossingWidget.h"
 
 CrossingWidget::CrossingWidget(QWidget *parent) {
-    setFixedSize(600,600);
+    setFixedSize(600,800);
     ur = 0; br = 0; bl = 0; ul = 0;
     frame = new QLabel(this);
     frame->setObjectName("label_but_picture");
@@ -28,19 +28,178 @@ void CrossingWidget::paintEvent(QPaintEvent *) {
     auto c = Qt::red;
     painter.setBrush(c);
     ////
-    painter.setBrush(Qt::white);
-    painter.setPen(Qt::black);
+    painter.setBrush(Qt::black);
+    painter.setPen(Qt::white);
 
-    //Upper-Right
-    painter.drawRect(center+offset,center+offset,lwidth,lheight);
+    int base_right = center+2*offset-lwidth;
+    int base_left = center-2*offset;
+    int baseu = center+50-3*offset;
+    int baseb = center+offset;
+    int yellowOffset = 3*(lwidth/3);
+    int greenOffset = 6*(lwidth/3);
+    //Upper-Right lightframe
+    painter.drawRect(base_right,baseu,lwidth,lheight);
+    //Bottom-Right lightframe
+    painter.drawRect(base_right,baseb,lwidth,lheight);
+    //Bottom-Left lightframe
+    painter.drawRect(base_left, baseb, lwidth, lheight);
+    //Upper-Left lightframe
+    painter.drawRect(base_left,baseu,lwidth,lheight);
 
-    //Bottom-Right
-    painter.drawRect(center+offset,center-offset,lwidth,lheight);
+    //Upper-Right lightbulbs
+    switch (ur) {
+        case 1:{//red
+            painter.setBrush(Qt::red);
+            painter.drawEllipse(base_right,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 2:{//yellow
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::yellow);
+            painter.drawEllipse(base_right,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 3:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::green);
+            painter.drawEllipse(base_right,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        default:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+    };
+    switch (br) {
+        case 1:{//red
+            painter.setBrush(Qt::red);
+            painter.drawEllipse(base_right,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 2:{//yellow
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::yellow);
+            painter.drawEllipse(base_right,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 3:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::green);
+            painter.drawEllipse(base_right,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        default:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_right,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_right,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_right,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+    };
+    switch (bl) {
+        case 1:{//red
+            painter.setBrush(Qt::red);
+            painter.drawEllipse(base_left,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 2:{//yellow
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::yellow);
+            painter.drawEllipse(base_left,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 3:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::green);
+            painter.drawEllipse(base_left,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+        default:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseb,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseb+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseb+greenOffset,lwidth,lwidth);
+        }
+            break;
+    };
+    switch (ul) {
+        case 1:{//red
+            painter.setBrush(Qt::red);
+            painter.drawEllipse(base_left,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 2:{//yellow
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::yellow);
+            painter.drawEllipse(base_left,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        case 3:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::green);
+            painter.drawEllipse(base_left,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+        default:{
+            painter.setBrush(Qt::darkRed);
+            painter.drawEllipse(base_left,baseu,lwidth,lwidth);
+            painter.setBrush(Qt::darkYellow);
+            painter.drawEllipse(base_left,baseu+yellowOffset,lwidth,lwidth);
+            painter.setBrush(Qt::darkGreen);
+            painter.drawEllipse(base_left,baseu+greenOffset,lwidth,lwidth);
+        }
+            break;
+    }
 
-    //Bottom-Left
-    painter.drawRect(center-offset, center-offset, lwidth, lheight);
 
-    //Upper-Left
-    painter.drawRect(center-offset,center+offset,lwidth,lheight);
 
 }

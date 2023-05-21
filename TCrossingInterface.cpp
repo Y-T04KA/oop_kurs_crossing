@@ -19,6 +19,8 @@ void TCrossingInterface::receive(QByteArray msg) {
         //manual lights
         QStringList split = input.split(separator);
         int one = split[0].toShort();
+        cw->setLights(split[0].toShort(),split[1].toShort(),split[2].toShort(),split[3].toShort());
+        cw->update();
         //something-something(split[0].toShort(),split[1].toShort(),split[2].toShort(),split[0].toShort());
         answer += "Светофор в ручном управлении";
     } else {
